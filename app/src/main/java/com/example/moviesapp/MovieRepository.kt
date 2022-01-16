@@ -7,7 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieRepository constructor(private val service : MovieServiceExample?) : IMovieRepository {
+class MovieRepository : IMovieRepository {
     override fun getMovies(onResponse : (list : List<MovieItem>) -> Unit, onFailure : (message : String) -> Unit){
         val retrofit = RetrofitClient().getRetrofitInstance()
         val serviceMovie = retrofit?.create(MovieServiceExample::class.java)

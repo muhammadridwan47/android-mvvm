@@ -14,7 +14,6 @@ import com.bumptech.glide.request.RequestOptions
 class MovieCardAdapter(private val dataSet: Array<MovieItem>) :
   RecyclerView.Adapter<MovieCardAdapter.ViewHolder>() {
 
-  private var context: Context? = null
   /**
    * Provide a reference to the type of views that you are using
    * (custom ViewHolder).
@@ -38,7 +37,6 @@ class MovieCardAdapter(private val dataSet: Array<MovieItem>) :
     // Create a new view, which defines the UI of the list item
     val view = LayoutInflater.from(viewGroup.context)
       .inflate(R.layout.movie_item, viewGroup, false)
-    context = viewGroup.context
     return ViewHolder(view)
   }
 
@@ -48,12 +46,9 @@ class MovieCardAdapter(private val dataSet: Array<MovieItem>) :
     // contents of the view with that element
     viewHolder.apply {
       title.text = dataSet[position].title
-      if(context != null) {
-        Glide.with(context!!)
+        Glide.with(viewHolder.itemView.context)
           .load("https://image.tmdb.org/t/p/w500/${dataSet[position].image}")
           .into(image)
-      }
-
     }
   }
 
