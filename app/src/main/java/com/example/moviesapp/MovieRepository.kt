@@ -3,14 +3,19 @@ package com.example.moviesapp
 import com.example.moviesapp.retrofit.GetMoviesResponse
 import com.example.moviesapp.retrofit.MovieServiceExample
 import com.example.moviesapp.retrofit.RetrofitClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MovieRepository : IMovieRepository {
-    override fun getMovies(onResponse : (list : List<MovieItem>) -> Unit, onFailure : (message : String) -> Unit){
+    override suspend fun getMovies(onResponse : (list : List<MovieItem>) -> Unit, onFailure : (message : String) -> Unit){
         val retrofit = RetrofitClient().getRetrofitInstance()
         val serviceMovie = retrofit?.create(MovieServiceExample::class.java)
+
+        withContext(Dispatchers.IO) {
+
         val call = serviceMovie?.getMovies()
 
         call?.enqueue(object : Callback<GetMoviesResponse>{
@@ -31,5 +36,7 @@ class MovieRepository : IMovieRepository {
             }
 
         })
+        }
+
     }
 }

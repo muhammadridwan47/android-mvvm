@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
           adapter = MovieCardAdapter(movies.toTypedArray())
         }
       })
-
-
     }
 
 }
