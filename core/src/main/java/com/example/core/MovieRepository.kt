@@ -1,8 +1,8 @@
-package com.example.moviesapp
+package com.example.core
 
-import com.example.moviesapp.retrofit.GetMoviesResponse
-import com.example.moviesapp.retrofit.MovieServiceExample
-import com.example.moviesapp.retrofit.RetrofitClient
+import com.example.core.retrofit.GetMoviesResponse
+import com.example.core.retrofit.MovieServiceExample
+import com.example.core.retrofit.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Call
@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MovieRepository : IMovieRepository {
-    override suspend fun getMovies(onResponse : (list : List<MovieItem>) -> Unit, onFailure : (message : String) -> Unit){
+    override suspend fun getMovies(onResponse : (list : List<com.example.core.MovieItem>) -> Unit, onFailure : (message : String) -> Unit){
         val retrofit = RetrofitClient().getRetrofitInstance()
         val serviceMovie = retrofit?.create(MovieServiceExample::class.java)
 

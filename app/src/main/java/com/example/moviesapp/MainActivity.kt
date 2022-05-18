@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-  @AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityMainBinding

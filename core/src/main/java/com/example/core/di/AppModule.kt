@@ -1,6 +1,6 @@
-package com.example.moviesapp.di
+package com.example.core.di
 
-import com.example.moviesapp.MovieRepository
+import com.example.core.MovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

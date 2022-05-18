@@ -1,6 +1,6 @@
-package com.example.moviesapp.retrofit
+package com.example.core.retrofit
 
-import com.example.moviesapp.MovieItem
+import com.example.core.MovieItem
 
 data class GetMoviesResponse(
   val page: Int,
