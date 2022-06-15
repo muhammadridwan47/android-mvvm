@@ -22,14 +22,8 @@ class MovieCardAdapter(private val dataSet: Array<MovieItem>) :
    */
 
   class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val title: TextView
-    val image : ImageView
-
-    init {
-      // Define click listener for the ViewHolder's View.
-      title = view.findViewById(R.id.title)
-      image = view.findViewById(R.id.img)
-    }
+    var title: TextView = view.findViewById(R.id.title)
+    var image : ImageView = view.findViewById(R.id.img)
   }
 
   // Create new views (invoked by the layout manager)
@@ -44,12 +38,10 @@ class MovieCardAdapter(private val dataSet: Array<MovieItem>) :
   override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
     // Get element from your dataset at this position and replace the
     // contents of the view with that element
-    viewHolder.apply {
-      title.text = dataSet[position].title
+        viewHolder.title.text = dataSet[position].title
         Glide.with(viewHolder.itemView.context)
           .load("https://image.tmdb.org/t/p/w500/${dataSet[position].image}")
-          .into(image)
-    }
+          .into(viewHolder.image)
   }
 
   // Return the size of your dataset (invoked by the layout manager)
